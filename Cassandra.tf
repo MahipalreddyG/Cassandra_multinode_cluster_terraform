@@ -52,16 +52,16 @@ resource "aws_instance" "hello" {
   provisioner "remote-exec" {
     inline = [
         "sudo chmod 777 /etc/cassandra/",
-        "sudo mv /etc/cassandra/cassandra.yaml /etc/cassandra/cassandra.yaml.bkp",
+#        "sudo mv /etc/cassandra/cassandra.yaml /etc/cassandra/cassandra.yaml.bkp",
       ]
   }
   
 # Replace the cassandra.yaml file with our own cassandra.yaml for easylly change the parameters
   
-  provisioner "file" {
-    source      = "/home/ubuntu/cassandra.yaml"
-    destination = "/etc/cassandra/cassandra.yaml"
-  }
+ # provisioner "file" {
+ #  source      = "/home/ubuntu/cassandra.yaml"
+ #  destination = "/etc/cassandra/cassandra.yaml"
+ # }
 
 # Do the changes in cassandra.yaml using with config.sh
   
